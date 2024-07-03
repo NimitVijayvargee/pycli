@@ -9,5 +9,5 @@ chat> is the initial component of the syntax. The best command to use as of now 
 
 ``` chat>math> ```
 math> is the part reserved for maths based commands
--add (numbers) - Add numbers (currently only integers)
--exit - return to chat>
+- add (numbers) - Add numbers (currently only integers)
+- exit - return to chat>
