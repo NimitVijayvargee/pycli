@@ -90,22 +90,21 @@ def rizz():
 def mathing():
     import mathcmd
     print("Begin mathing.")
-    mathing = True
     arguments = []
     command = None
     mathcmds = {
         "add":"mathcmd.add({0})",
-        "exit":"return Nonef"
+        "exit":"return None",
+        "trig":"mathcmd.trig()",
+        "config":"mathcmd.config({0},{1})"
     }
     while True:
         if command == "exit":
-            mathing = False
             break
-        command = input("chat.math>").lower()
+        command = input("chat>math>").lower()
         parts = command.split()
         command = parts[0]
         arguments = parts[1:]
-
         try:
             exec(mathcmds[command].format(arguments))
         except Exception as e:
