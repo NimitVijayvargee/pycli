@@ -1,5 +1,5 @@
 import random
-
+from mathcmd import mathing
 
 def hello():
     print(
@@ -86,42 +86,16 @@ def rizz():
     ] #list of corny pickup lines
     #list of 60ish pickup lines
     print(random.choice(rizzes))
-
-def mathing():
-    import mathcmd
-    print("Begin mathing.")
-    arguments = []
-    command = None
-    mathcmds = {
-        "add":"mathcmd.add({0})",
-        "exit":"return None",
-        "trig":"mathcmd.trig()",
-        "config":"mathcmd.config({0},{1})"
-    }
-    while True:
-        if command == "exit":
-            break
-        command = input("chat>math>").lower()
-        parts = command.split()
-        command = parts[0]
-        arguments = parts[1:]
-        try:
-            exec(mathcmds[command].format(arguments))
-        except Exception as e:
-            if not mathcmds.__contains__(command):
-                print("Invalid Math Command.")
-
 cmd = {"hello": "hello()",
         "rizz_me": "rizz()",
         "math":"mathing()",
         "exit":"exit()"}
-command = None
+
 
 while True:
+    command = input("chat>").lower()
     if command == "exit":
         exit()
-
-    command = input("chat>").lower()
 
     try:
         exec(cmd[command])

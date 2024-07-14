@@ -4,6 +4,33 @@ configs = {
     'angle':'deg',
     'acc':4
 }
+
+def mathing():
+    print("Begin mathing.")
+    arguments = []
+    command = None
+    mathcmds = {
+        "add":"add({0})",
+        "exit":"return None",
+        "trig":"trig()",
+        "config":"config({0},{1})"
+    }
+    while True:
+        if command == "exit":
+            break
+        command = input("chat>math>").lower()
+        parts = command.split()
+        command = parts[0]
+        arguments = parts[1:]
+        try:
+            exec(mathcmds[command].format(arguments))
+        except Exception as e:
+            if not mathcmds.__contains__(command):
+                print("Invalid Math Command.")
+
+
+
+
 def add(nums):
     sum = 0
     for x in nums:
@@ -39,9 +66,8 @@ def parse_num(num):
             
         return "invalid_number"
 
-def config(args):
-    attr = args[0]
-    val = args[1]
+def config(attr, val):
+    print(attr, val)
     if attr == 'angle':
         if ['deg','rad'].__contains__(val):
             print(True)
