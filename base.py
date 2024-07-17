@@ -1,6 +1,12 @@
 class Base:
-    cmds = {"exit":"return None"}
-
+    cmds = {"exit":"return None",
+            "help":"self.help({0})"}
+    
+    helps = {"exit":"Exit the module",
+            "help":"Get help (like this)."}
+    
+    usage ={"exit":"exit",
+            "help":"help [*command]"}
     def __init__(self, name) -> None:
         self.name = name
         
@@ -20,3 +26,19 @@ class Base:
             except Exception as e:
                 if not self.cmds.__contains__(command):
                     print(f"Invalid {self.name} Command.")
+                    
+    def help(self, args):
+        print("Helping you!")
+        command = None
+        if len(args) > 0:
+            command = args[0]
+            print(command)
+        if command:
+            if self.cmds.__contains__(command):
+                print(f"{command} - {self.help[command]} \nSymtax:{self.usage[command]} \n(* indicates optional argument.)")
+            else:
+                print("Invalid command, cannot help!")
+                
+        else:
+            for x in self.cmds.keys:
+                print(f"{x} - {self.help[x]}")

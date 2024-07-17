@@ -15,7 +15,19 @@ class Math(Base):
             "multi":"self.multi({0})",
             "config":"self.config({0})"
         }
+        mathhelp = {
+            "add":"Add numbers together",
+            "multi":"Multiply numbers together",
+            "config":"Modify Module configuration."
+        }
+        mathusage = {
+            "add":"add [a] [b] [c] .....",
+            "multi":"multi [a] [b] [c] .....",
+            "config":"config [attr] [val]"
+        }
         self.cmds.update(mathcmds)
+        self.helps.update(mathhelp)
+        self.usage.update(mathusage)
 
     def add(self, nums):
         sum = 0
