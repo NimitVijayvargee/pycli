@@ -34,11 +34,11 @@ class Base:
             command = args[0]
             print(command)
         if command:
-            if self.cmds.__contains__(command):
-                print(f"{command} - {self.help[command]} \nSymtax:{self.usage[command]} \n(* indicates optional argument.)")
+            if command in self.cmds:
+                print(f"{command} - {self.helps[command]} \nSymtax:{self.usage[command]} \n(* indicates optional argument.)")
             else:
                 print("Invalid command, cannot help!")
                 
         else:
-            for x in self.cmds.keys:
-                print(f"{x} - {self.help[x]}")
+            for x in self.cmds.keys():
+                print(f"{x} - {self.helps[x]}")
